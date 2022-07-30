@@ -1,0 +1,16 @@
+
+<launch>
+
+<include file="$(find i2cpwm_board)/launch/i2cpwm_node.launch"/>
+
+<include file="$(find raspicam_node)/launch/camerav2_640x480_2.launch">
+ <arg name="enable_raw" value="true" />
+</include>
+
+<node pkg="opencv" name="lane_detection" type="lane_detection.py" output="screen" >
+</node>
+
+<node pkg="donkey_car" name="control_node" type="control_node.py" output="screen" >
+</node>
+
+</launch>
